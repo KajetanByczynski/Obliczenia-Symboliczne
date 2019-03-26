@@ -1,0 +1,17 @@
+j[x_] := 0;
+f[x_] := ArcTan[x];
+tab2 = Table[j[x], {x, 0, 100, 0.1}];
+h = 0.001;
+tab2[[1]] = 0;
+For[i = 2, i < 1002, i++, tab2[[i]] = tab2[[i - 1]] + h*f[i*h];]
+MatrixForm[tab2]
+ListPlot[tab2]
+
+(* tab=Table[f[x],{x,0,5,0.01}]; *)
+
+(* MatrixForm[tab] *)
+(*MatrixForm[tab2] *)
+
+
+(* tab2[[1]] *)
+
