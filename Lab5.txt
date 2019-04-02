@@ -1,0 +1,21 @@
+h = 0.1; (*krok na osi X*)
+T = 0.01;
+L = 10;
+n = L/h;
+
+tab1 = Table[0, {x, 0, 10, h}];
+tab2 = Table[0, {x, 0, 10, h}];
+tab2[[1]] = Sin[0];
+
+
+For[i = 1, i < 100, i++,
+  tab1[[1]] = Sin[T*i];
+  For[j = 2, j < n, j++,
+   tab1[[j]] = tab2[[j]] - (T/(2*h))*(tab2[[j + 1]] - tab2[[j - 1]]);
+   ];
+  tab1[[n]] = 0;	
+  tab2 = tab1;
+  ];
+
+tab1
+ListPlot[tab1]
