@@ -1,0 +1,15 @@
+
+
+
+tab2 = Table[0, {x, 101}, {y, 101}];
+
+
+For[j = 1, j <= 101, j++,
+ 
+ tab2[[j - 1, j]] = 0;
+ tab2[[j, j]] = f[-1 + (j - 1)/100];
+ tab2[[j + 1, j]] = 0;
+ ]
+
+tab1 = Table[f[x] + f[y], {x, 5}, {y, 5}];
+MatrixForm[tab2]
