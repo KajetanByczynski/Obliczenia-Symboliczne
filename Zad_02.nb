@@ -1,5 +1,5 @@
 A = {{1, 2}, {3, 4}, {5, 6}};
-B = {{5, 6, 7}, {7, 8, 9}};
+B = {{5, 6, 7}, {7, 8, 0}};
 F = Table[0, {Dimensions[A][[1]]}, {Dimensions[B][[2]]}];
 For[i = 1, i <= Dimensions[F][[1]], i++,
   For[j = 1, j <= Dimensions[F][[2]], j++,
@@ -7,4 +7,32 @@ For[i = 1, i <= Dimensions[F][[1]], i++,
     For[k = 1, k <= Dimensions[A][[2]], k++,
       F[[i, j]]  = F[[i, j]]  + A[[i, k]]*B[[k, j]];
       ];];];
-MatrixForm[F]
+MatrixForm[F];
+Clear[F];
+F = {{1, 2}, {3, 4}};
+MatrixForm[F] (*Wyświelta macierz xDDDdf*)
+Det[F]; (*Wyznacznik musi być 0 żeby Inverse działało*)
+MatrixForm[Inverse[F]];
+(*Eliminacja gaussa - redukcja w wierszach*)
+M = {{1, 3, 5}, {2, 6, 10}, {17, 19, 21}};
+MatrixForm[M]
+MatrixForm[RowReduce[M]]
+Eigenvalues[M]
+Eigenvalues[RowReduce[M]]
+Eigenvectors[M]
+Eigenvectors[RowReduce[M]]
+{ww, wektor} = Eigensystem[M]
+ww
+wektor
+Clear["Global`*"]
+(*DSolve[równanie róniczkowe, funkcja, zmienna niezależna]*)
+DSolve[y'[x] - 2*y[x] == Cos[x], y[x], x];
+r = DSolve[{y'[x] - 2*y[x] == Cos[x], y[0] == 1}, y[x], x];
+(*Wykres rozwiązania*)
+(*Plot[funkcja, {x, xMIN, xMAX}]*)
+Plot[y[x] /. r, {x, 0, 1}]
+(*
+W dom;
+dx/dt = -2x+5y;
+dy/dt = x + 2y;
+*)
