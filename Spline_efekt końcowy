@@ -1,0 +1,5 @@
+pts = {{0, 0}, {1, 1}, {2, -1}, {3, -20}, {4, 8}, {5, 
+    7}, {6, -20}, {7, 3}, {8, 6}};
+f = BSplineFunction[pts]
+Show[Graphics[{Red, Point[pts], Green, Line[pts]}, Axes -> True]]
+Show[ParametricPlot[f[t], {t, 0, 1}]]
